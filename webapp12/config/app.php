@@ -17,6 +17,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Etiqueta del servidor
+    |--------------------------------------------------------------------------
+    |
+    | Identifica qué servidor web atendió la petición (Servidor 1 / Servidor 2).
+    | Se define en el .env de cada servidor con SERVER_LABEL.
+    |
+    */
+
+    'server_label' => env('SERVER_LABEL', gethostname() ?: 'Servidor'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |

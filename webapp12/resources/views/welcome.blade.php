@@ -9,9 +9,10 @@
 <body class="min-h-screen flex items-center justify-center bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
     <main class="text-center space-y-6 p-6">
         <h1 class="text-3xl font-semibold">{{ config('app.name') }}</h1>
+        <div><x-server-badge /></div>
 
         @auth
-            <p>Bienvenido, {{ auth()->user()->name }} Server 1.</p>
+            <p>Bienvenido, {{ auth()->user()->name }}.</p>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="rounded-md bg-zinc-900 px-4 py-2 text-white dark:bg-white dark:text-zinc-900">
