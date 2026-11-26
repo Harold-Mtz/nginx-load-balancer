@@ -13,7 +13,8 @@ class ProfileUpdateTest extends TestCase
 
     public function test_profile_page_is_displayed(): void
     {
-        $this->actingAs($user = User::factory()->create());
+        $this->actingAs($user = User::factory()->create(['two_factor_confirmed_at' => now()]))
+            ->withSession(['totp_passed_for' => $user->id]);
 
         $this->get('/settings/profile')->assertOk();
     }

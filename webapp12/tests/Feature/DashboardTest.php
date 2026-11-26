@@ -18,8 +18,8 @@ class DashboardTest extends TestCase
 
     public function test_authenticated_users_can_visit_the_dashboard(): void
     {
-        $user = User::factory()->create();
-        $this->actingAs($user);
+        $user = User::factory()->create(['two_factor_confirmed_at' => now()]);
+        $this->actingAs($user)->withSession(['totp_passed_for' => $user->id]);
 
         $response = $this->get('/dashboard');
         $response->assertStatus(200);
